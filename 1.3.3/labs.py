@@ -198,6 +198,9 @@ def get_var(x: Value):
     else:
         raise TypeError
 
+var = get_var
+err = get_err
+
 def value_from_series(s):
     if len(s) <= 1:
         raise IndexError
@@ -214,3 +217,5 @@ def curve_fit(xdata, ydata, f=line):
     params, cov = sc.curve_fit(line, xdata=xdata.agg(get_var), ydata=ydata.agg(get_var))
 
     return (Value(params[i], np.sqrt(cov[i][i])) for i in range(len(params)))
+
+pi = Value(3.1415926535897932384626433832795028841971693993751058209749445923078164062862)
